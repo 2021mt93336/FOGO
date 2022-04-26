@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>PrismSportApp.UWP</DisplayName>
+    <DisplayName>FOGO.UWP</DisplayName>
     <PublisherDisplayName>8d9004ce-f980-465c-a836-5db6c9991b07</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
