@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FOGO.Views.ChampionsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Svg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundColor="White"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <ScrollView>
+            <yummy:PancakeView>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="300" />
+                        <RowDefinition Height="70" />
+                    </Grid.RowDefinitions>
+                    <yummy:PancakeView
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Style="{StaticResource SpecialStack}">
+                        <StackLayout Padding="15">
+                            <lottie:AnimationView
+                                Animation="Champion.json"
+                                Loop="True"
+                                Style="{StaticResource AnimationChampions}" />
+                        </StackLayout>
+                        <yummy:PancakeView.IsVisible>
+                            <OnPlatform x:TypeArguments="x:Boolean">
+                                <On Platform="Android" Value="True" />
+                                <On Platform="UWP" Value="False" />
+                                <On Platform="Ios" Value="True" />
+                            </OnPlatform>
+                        </yummy:PancakeView.IsVisible>
+                    </yummy:PancakeView>
+                    <Picker
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        ItemDisplayBinding="{Binding Name}"
+                        ItemsSource="{Binding Leagues}"
+                        SelectedItem="{Binding LeagueSelected}"
+                        Style="{StaticResource PickerList}" />
+                    <StackLayout
+                        Grid.Row="2"
+                        IsVisible="{Binding Loading}"
+                        VerticalOptions="CenterAndExpand">
+                        <lottie:AnimationView
+                            Animation="loading-round-loader-animation.json"
+                            AutoPlay="True"
+                            HeightRequest="90"
+                            Loop="True" />
+                    </StackLayout>
+                    <ListView
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        IsVisible="{Binding Status}"
+                        ItemsSource="{Binding Seasons}"
+                        Style="{StaticResource ListChampions}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <Frame>
+                                            <Grid RowSpacing="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <Svg:SvgCachedImage
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Source="{Binding winner.crestUrl}"
+                                                    Style="{StaticResource ImageChampions}" />
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Style="{StaticResource WinnerName}"
+                                                    Text="{Binding winner.name}" />
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="0"
+                                                    Style="{StaticResource EndDate}"
+                                                    Text="{Binding endDate}" />
+                                            </Grid>
+                                        </Frame>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </yummy:PancakeView>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication
+    x:Class="FOGO.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Micro1="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    xmlns:Svg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    mc:Ignorable="d">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--#region StartPage-->
+            <Style x:Key="StartPageEntry" TargetType="Entry">
+                <Setter Property="TextColor" Value="#000000" />
+                <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                <Setter Property="PlaceholderColor" Value="#000000" />
+                <Setter Property="Visual" Value="Material" />
+            </Style>
+
+            <Style x:Key="StartPageButton" TargetType="Button">
+                <Setter Property="TextColor" Value="#FFFFFF" />
+                <Setter Property="Visual" Value="Material" />
+            </Style>
+
+            <Style x:Key="StackStart" TargetType="StackLayout">
+                <Setter Property="Padding" Value="30" />
+                <Setter Property="Spacing" Value="20" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+
+            <Style x:Key="GradientPage" TargetType="yummy:PancakeView">
+                <Setter Property="BackgroundColor" Value="#FFFFFF" />
+            </Style>
+            <!--#endregion-->
+
+            <!--#region MenuPages-->
+            <Style x:Key="GradientPageMenu" TargetType="yummy:PancakeView">
+                <Setter Property="BackgroundGradientStartColor" Value="#303F9F" />
+                <Setter Property="BackgroundGradientEndColor" Value="#5C258D" />
+                <Setter Property="WidthRequest" Value="315" />
+                <Setter Property="Padding" Value="20" />
+            </Style>
+
+            <Style x:Key="Buttons" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+            </Style>
+
+            <Style x:Key="AnimationMenu" TargetType="lottie:AnimationView">
+                <Setter Property="AutoPlay" Value="True" />
+                <Setter Property="HeightRequest" Value="110" />
+
+            </Style>
+
+            <Style x:Key="UserStyleName" TargetType="Label">
+                <Setter Property="FontSize" Value="30" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+            <!--#endregion-->
+
+            <!--#region ListLeaguePage-->
+            <Style x:Key="ListLeagueLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="Visual" Value="Material" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="FirstStackLP" TargetType="StackLayout">
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="ListLeagueBackGroundColor" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>
+            <Style x:Key="ListLeagueCarousel" TargetType="CarouselView">
+                <Setter Property="HorizontalScrollBarVisibility" Value="Never" />
+                <Setter Property="IsScrollAnimated" Value="False" />
+                <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+            </Style>
+            <Style x:Key="ListLeagueImage" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+            </Style>
+            <!--#endregion-->
+
+            <!--#region DetailLeaguePage-->
+            <Style x:Key="DetailLeagueFrame" TargetType="Frame">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="WidthRequest" Value="400" />
+            </Style>
+
+            <Style x:Key="ListTeams" TargetType="ListView">
+                <Setter Property="RowHeight" Value="100" />
+                <Setter Property="SelectionMode" Value="Single" />
+                <Setter Property="Visual" Value="Material" />
+                <Setter Property="SeparatorColor" Value="ForestGreen" />
+            </Style>
+
+            <Style x:Key="ImageTeam" TargetType="Svg:SvgCachedImage">
+                <Setter Property="Aspect" Value="AspectFit" />
+            </Style>
+
+            <!--#region Position and Team Name-->
+            <Style x:Key="DetailLeagueLabelPosition" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="DetailLeagueLabelName" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+            <!--#endregion-->
+
+            <!--#region Points-->
+            <Style x:Key="DetailLeagueLabelPTS" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="End" />
+            </Style>
+            <!--#endregion-->
+            <!--#endregion-->
+
+            <!--#region TeamInfoPage-->
+            <Style x:Key="Titles" TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="TitlesTeamName" TargetType="Label">
+                <Setter Property="FontSize" Value="35" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            </Style>
+
+            <Style x:Key="TitleCharts" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="Visual" Value="Material" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <Style x:Key="SpecialStack" TargetType="yummy:PancakeView">
+                <Setter Property="BackgroundColor" Value="#303F9F" />
+                <Setter Property="CornerRadius" Value="0,0,20,20" />
+            </Style>
+
+            <Style x:Key="Charts" TargetType="Micro1:ChartView">
+                <Setter Property="HeightRequest" Value="200" />
+                <Setter Property="Visual" Value="Material" />
+                <Setter Property="WidthRequest" Value="400" />
+            </Style>
+
+            <Style x:Key="SvgImage" TargetType="Svg:SvgCachedImage">
+                <Setter Property="HeightRequest" Value="130" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="BitmapOptimizations" Value="True" />
+                <Setter Property="VerticalOptions" Value="Start" />
+            </Style>
+            <!--#endregion-->
+
+            <!--#region MatchesPage-->
+            <Style x:Key="GroupLabel" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <Style x:Key="Team" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="Status" TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="Date" TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            </Style>
+
+            <Style x:Key="Score" TargetType="Label">
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            </Style>
+
+            <Style x:Key="List" TargetType="ListView">
+                <Setter Property="RowHeight" Value="220" />
+                <Setter Property="Visual" Value="Material" />
+                <Setter Property="SelectionMode" Value="Single" />
+                <Setter Property="SeparatorColor" Value="ForestGreen" />
+            </Style>
+
+            <Style x:Key="PickerList" TargetType="Picker">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="Visual" Value="Material" />
+                <Setter Property="Title" Value="Select League" />
+                <Setter Property="TitleColor" Value="Black" />
+            </Style>
+
+            <Style x:Key="FrameScore" TargetType="Frame">
+                <Setter Property="BorderColor" Value="ForestGreen" />
+                <Setter Property="Visual" Value="Material" />
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="HasShadow" Value="True" />
+            </Style>
+
+            <Style x:Key="FirstStack" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="Padding" Value="15" />
+            </Style>
+
+            <Style x:Key="MidStack" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal" />
+                <Setter Property="Spacing" Value="10" />
+                <Setter Property="VerticalOptions" Value="Start" />
+            </Style>
+
+
+            <!--#endregion-->
+
+            <!--#region FavoriteTeamPage-->
+            <Style x:Key="LabelNotFound" TargetType="Label">
+                <Setter Property="FontSize" Value="17" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            </Style>
+
+            <Style x:Key="animationfav" TargetType="lottie:AnimationView">
+                <Setter Property="AutoPlay" Value="True" />
+                <Setter Property="HeightRequest" Value="110" />
+            </Style>
+
+            <Style x:Key="Image" TargetType="Svg:SvgCachedImage">
+                <Setter Property="Aspect" Value="AspectFit" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+            </Style>
+
+            <Style x:Key="ListFav" TargetType="ListView">
+                <Setter Property="RowHeight" Value="80" />
+            </Style>
+
+            <Style x:Key="TeamName" TargetType="Label">
+                <Setter Property="FontSize" Value="17" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+            <!--#endregion-->
+
+            <!--#region ChampionsPage-->
+            <Style x:Key="ImageChampions" TargetType="Svg:SvgCachedImage">
+                <Setter Property="HeightRequest" Value="30" />
+                <Setter Property="Aspect" Value="AspectFit" />
+            </Style>
+
+            <Style x:Key="AnimationChampions" TargetType="lottie:AnimationView">
+                <Setter Property="HeightRequest" Value="250" />
+                <Setter Property="AutoPlay" Value="True" />
+            </Style>
+
+            <Style x:Key="WinnerName" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <Style x:Key="EndDate" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+
+            <Style x:Key="ListChampions" TargetType="ListView">
+                <Setter Property="RowHeight" Value="120" />
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>
+            <!--#endregion-->
+
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>

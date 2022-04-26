@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="FOGO.Views.MenuPages"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:TabbedPages="clr-namespace:FOGO.Views;assembly=FOGO"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BarBackgroundColor="#FFFFFF"
+    BarTextColor="#0e3e55"
+    SelectedTabColor="#1d3557"
+    mc:Ignorable="d">
+    <NavigationPage
+        Title="Leagues"
+        BarBackgroundColor="#FFFFFF"
+        BarTextColor="#000000"
+        IconImageSource="@drawable/icons8_leaderboard.ico">
+        <x:Arguments>
+            <TabbedPages:ListLeaguesPage />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage
+        Title="Matches"
+        BarBackgroundColor="#FFFFFF"
+        BarTextColor="#000000"
+        IconImageSource="@drawable/icons8_stadium.ico">
+        <x:Arguments>
+            <TabbedPages:MatchesPage />
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage
+        Title="Favorites"
+        BarBackgroundColor="#FFFFFF"
+        BarTextColor="#000000"
+        IconImageSource="@drawable/icons8_star.ico">
+        <x:Arguments>
+            <TabbedPages:TeamFavoritePage />
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

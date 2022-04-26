@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FOGO.Views.MatchesPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Svg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:materialFrame="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="Gamepage"
+    Title="{Binding Title}"
+    BackgroundColor="White"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Style="{StaticResource FirstStack}">
+                <Picker
+                    ItemDisplayBinding="{Binding Name}"
+                    ItemsSource="{Binding Leagues}"
+                    SelectedItem="{Binding LeagueSelected, Mode=TwoWay}"
+                    Style="{StaticResource PickerList}" />
+            </StackLayout>
+            <StackLayout IsVisible="{Binding Loading}" VerticalOptions="CenterAndExpand">
+                <lottie:AnimationView
+                    Animation="loading-round-loader-animation.json"
+                    AutoPlay="True"
+                    HeightRequest="90"
+                    Loop="True">
+                    <lottie:AnimationView.IsVisible>
+                        <OnPlatform x:TypeArguments="x:Boolean">
+                            <On Platform="UWP" Value="False" />
+                            <On Platform="ios" Value="True" />
+                            <On Platform="Android" Value="True" />
+                        </OnPlatform>
+                    </lottie:AnimationView.IsVisible>
+                </lottie:AnimationView>
+                <ActivityIndicator IsRunning="{Binding Loading}" Color="Accent">
+                    <ActivityIndicator.IsVisible>
+                        <OnPlatform x:TypeArguments="x:Boolean">
+                            <On Platform="UWP" Value="True" />
+                            <On Platform="ios" Value="False" />
+                            <On Platform="Android" Value="False" />
+                        </OnPlatform>
+                    </ActivityIndicator.IsVisible>
+                </ActivityIndicator>
+            </StackLayout>
+            <ListView
+                CachingStrategy="RecycleElement"
+                IsVisible="{Binding Status}"
+                ItemsSource="{Binding Matches}"
+                RowHeight="180"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <materialFrame:MaterialFrame Elevation="30">
+                                    <Grid RowSpacing="20">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="20" />
+                                            <RowDefinition Height="20" />
+                                            <RowDefinition Height="20" />
+                                            <RowDefinition Height="20" />
+                                            <RowDefinition Height="100" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="300" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{Binding HomeTeam.Name, Mode=TwoWay}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            HorizontalTextAlignment="Start"
+                                            Text="{Binding AwayTeam.Name, Mode=TwoWay}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            Text="{Binding Score.FullTime.HomeTeam}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="2"
+                                            Text="{Binding Score.FullTime.AwayTeam}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            FontSize="11"
+                                            Text="{Binding UtcDate, StringFormat='{0:MMMM dd yyyy, HH:mm:ss}'}"
+                                            TextColor="Black" />
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="0"
+                                            FontSize="11"
+                                            Text="{Binding Status}"
+                                            TextColor="Black">
+                                            <Label.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding Status}"
+                                                    TargetType="Label"
+                                                    Value="FINISHED">
+                                                    <Setter Property="TextColor" Value="#90be6d" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding Status}"
+                                                    TargetType="Label"
+                                                    Value="POSTPONED">
+                                                    <Setter Property="TextColor" Value="#f94144" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding Status}"
+                                                    TargetType="Label"
+                                                    Value="SCHEDULED">
+                                                    <Setter Property="TextColor" Value="#ffbe0b" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </Grid>
+                                </materialFrame:MaterialFrame>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
